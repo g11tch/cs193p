@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Card : NSObject {
+class Card {
     var contents = ""
     var chosen = false
     var matched = false

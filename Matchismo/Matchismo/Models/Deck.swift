@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Deck : NSObject {
+class Deck {
     var cards : [Card] = []
     
     func addCard(card: Card, atTop: Bool) {
