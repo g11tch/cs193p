@@ -9,13 +9,13 @@
 import Foundation
 
 class PlayingCardDeck : Deck {
-    override init() {
-        super.init()
-        for suit : String in PlayingCard.validSuits {
-            for rank : Int in 1...PlayingCard.maxRank {
-                let card = PlayingCard(suit: suit, rank: rank)
-                self.addCard(card)
-            }
-        }
+  override init() {
+    super.init()
+    for suit : String in PlayingCard.validSuits {
+      for rank : Int in 1...PlayingCard.maxRank {
+        let card = PlayingCard(suit: suit, rank: rank)
+        self.addCard(card)
+      }
     }
+  }
 }
