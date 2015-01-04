@@ -57,4 +57,10 @@ class PlayingCard : Card {
             self.contents = newValue
         }
     }
+    
+    init(suit: String, rank: Int) {
+        super.init()
+        self.suit = suit
+        self.rank = rank
+    }
 }

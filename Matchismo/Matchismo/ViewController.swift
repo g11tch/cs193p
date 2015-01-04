@@ -17,6 +17,8 @@ class ViewController: UIViewController {
         }
     }
     
+    let deck : PlayingCardDeck = PlayingCardDeck()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -46,8 +48,17 @@ class ViewController: UIViewController {
         return title?.length > 0;
     }
     
+    func nextCardContents() -> String {
+        if let card = self.deck.drawRandomCard() {
+            return card.contents
+        }
+        
+        return "No cards left"
+    }
+    
     func showFront(button : UIButton) {
-        self.setImageAndTitleFor(button, imageName: "cardfront", title: "Ahearts")
+        let contents = self.nextCardContents()
+        self.setImageAndTitleFor(button, imageName: "cardfront", title: contents)
     }
     
     func showBack(button : UIButton) {
