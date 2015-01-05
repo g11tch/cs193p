@@ -108,13 +108,6 @@
                                     <action selector="touchedCard:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="8IP-cK-XGV"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flips: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0wP-b6-OBi">
-                                <rect key="frame" x="39" y="472" width="56" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="b0X-XD-a3k">
                                 <rect key="frame" x="13" y="242" width="64" height="103"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -163,11 +156,30 @@
                                     <action selector="touchedCard:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="LoF-z2-Mwi"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aSK-kA-ap0">
+                                <rect key="frame" x="37" y="389" width="225" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="0.25098040699958801" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
-                        <outlet property="flipLabel" destination="0wP-b6-OBi" id="JeA-Hx-luQ"/>
+                        <outlet property="scoreLabel" destination="aSK-kA-ap0" id="YgF-8c-szC"/>
+                        <outletCollection property="cardButtons" destination="VEf-K4-eGK" collectionClass="NSMutableArray" id="TGj-me-Eqd"/>
+                        <outletCollection property="cardButtons" destination="W4J-JJ-xkT" collectionClass="NSMutableArray" id="RgI-jg-dnC"/>
+                        <outletCollection property="cardButtons" destination="p1L-tG-msj" collectionClass="NSMutableArray" id="5ci-b6-j1R"/>
+                        <outletCollection property="cardButtons" destination="xS2-8S-DA5" collectionClass="NSMutableArray" id="rwH-Zf-Kc5"/>
+                        <outletCollection property="cardButtons" destination="V9w-Og-2hB" collectionClass="NSMutableArray" id="8GM-Ox-hzf"/>
+                        <outletCollection property="cardButtons" destination="QT7-qC-s3d" collectionClass="NSMutableArray" id="Xeg-Yc-nuQ"/>
+                        <outletCollection property="cardButtons" destination="VCd-xf-zyr" collectionClass="NSMutableArray" id="EoQ-Qt-dbU"/>
+                        <outletCollection property="cardButtons" destination="b0u-Yb-hHG" collectionClass="NSMutableArray" id="zPY-k6-BRs"/>
+                        <outletCollection property="cardButtons" destination="b0X-XD-a3k" collectionClass="NSMutableArray" id="Uit-C2-GmO"/>
+                        <outletCollection property="cardButtons" destination="q3Z-8K-cu5" collectionClass="NSMutableArray" id="MkA-1p-XiW"/>
+                        <outletCollection property="cardButtons" destination="zEe-tv-Y80" collectionClass="NSMutableArray" id="UOO-H8-2kn"/>
+                        <outletCollection property="cardButtons" destination="ZfZ-Ae-YCJ" collectionClass="NSMutableArray" id="GTK-CG-vNz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

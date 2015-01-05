@@ -10,64 +10,44 @@ import UIKit
 
 class ViewController: UIViewController {
   
-  @IBOutlet weak var flipLabel: UILabel!
-  var flipCount: Int = 0 {
-    didSet {
-      self.updateFlipLabel()
-    }
-  }
+  @IBOutlet var cardButtons: [UIButton]!
+  @IBOutlet weak var scoreLabel: UILabel!
   
-  let deck: PlayingCardDeck = PlayingCardDeck()
+  var deck = PlayingCardDeck()
   
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    // Do any additional setup after loading the view, typically from a nib.
-  }
+  lazy var game: CardMatchingGame = {
+    return CardMatchingGame(cardCount: self.cardButtons.count, deck: self.createDeck())
+  }()
   
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
-  }
-  
-  func updateFlipLabel() {
-    self.flipLabel.text = "Flips: \(self.flipCount)"
+  func createDeck() -> PlayingCardDeck {
+    return PlayingCardDeck()
   }
   
   @IBAction func touchedCard(sender: UIButton) {
-    if (self.frontShowing(sender)) {
-      self.showBack(sender)
-    } else {
-      self.showFront(sender)
+    if let chosenButtonIndex = find(self.cardButtons, sender) {
+      self.game.chooseCardAtIndex(chosenButtonIndex)
+      self.updateUI()
     }
-    self.flipCount++
   }
   
-  func frontShowing(button: UIButton) -> Bool {
-    let title : NSString? = button.currentTitle;
-    
-    return title?.length > 0;
-  }
-  
-  func nextCardContents() -> String {
-    if let card = self.deck.drawRandomCard() {
-      return card.contents
+  func updateUI() {
+    for (index, cardButton) in enumerate(cardButtons) {
+      if let card = game.cardAtIndex(index) {
+        cardButton.setBackgroundImage(backgroundImageForCard(card), forState: UIControlState.Normal)
+        cardButton.setTitle(titleForCard(card), forState: UIControlState.Normal)
+        cardButton.enabled = !card.isMatched()
+        scoreLabel.text = "Score \(game.score)"
+      }
     }
-    
-    return "No cards left"
   }
   
-  func showFront(button: UIButton) {
-    let contents = self.nextCardContents()
-    self.setImageAndTitleFor(button, imageName: "cardfront", title: contents)
+  func titleForCard(card: Card) -> String {
+    return card.isChosen() ? card.contents : ""
   }
   
-  func showBack(button: UIButton) {
-    self.setImageAndTitleFor(button, imageName: "cardback", title: "")
-  }
-  
-  func setImageAndTitleFor(button: UIButton, imageName: String, title: String) {
-    button.setBackgroundImage(UIImage(named: imageName), forState: UIControlState.Normal)
-    button.setTitle(title, forState: UIControlState.Normal)
+  func backgroundImageForCard(card: Card) -> UIImage {
+    let name = card.isChosen() ? "cardfront" : "cardback"
+    return UIImage(named: name)!
   }
 }
 
