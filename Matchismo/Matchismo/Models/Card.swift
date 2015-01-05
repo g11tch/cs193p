@@ -13,13 +13,14 @@ class Card {
   var chosen = false
   var matched = false
   
-  func isChosen() -> Bool { return chosen; }
-  func isMatched() -> Bool { return matched; }
-  
   init() { }
-  init(contents: String) {
+  convenience init(contents: String) {
+    self.init()
     self.contents = contents
   }
+  
+  func isChosen() -> Bool { return chosen; }
+  func isMatched() -> Bool { return matched; }
   
   func match(otherCards: [Card]) -> Int {
     return otherCards.reduce(0, { score, card in
@@ -31,3 +32,4 @@ class Card {
     })
   }
 }
+

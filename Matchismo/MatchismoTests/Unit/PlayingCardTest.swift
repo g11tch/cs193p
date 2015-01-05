@@ -35,4 +35,28 @@ class PlayingCardTest: XCTestCase {
     let card = PlayingCard(suit: "H", rank: 2)
     XCTAssert(card.rank == 2)
   }
+  
+  func testMatchSameRank() {
+    let card1 = PlayingCard(suit: "H", rank: 2)
+    let card2 = PlayingCard(suit: "S", rank: 2)
+    let score = card1.match([card2])
+    
+    XCTAssert(score == 4)
+  }
+  
+  func testMatchSameSuit() {
+    let card1 = PlayingCard(suit: "H", rank: 2)
+    let card2 = PlayingCard(suit: "H", rank: 3)
+    let score = card1.match([card2])
+    
+    XCTAssert(score == 1)
+  }
+  
+  func testMatchNone() {
+    let card1 = PlayingCard(suit: "S", rank: 2)
+    let card2 = PlayingCard(suit: "H", rank: 3)
+    let score = card1.match([card2])
+    
+    XCTAssert(score == 0)
+  }
 }

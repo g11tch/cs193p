@@ -63,4 +63,27 @@ class PlayingCard : Card {
     self.suit = suit
     self.rank = rank
   }
+  
+  // This is a crazy way to get match working for CardMatchingGame. Without this
+  // it uses Card.match method since the match(otherCards: [PlayingCard]) doesn't
+  // actually override the Card.match since it takes a different type. I'd 
+  // assume there is a better way.
+  override func match(otherCards: [Card]) -> Int {
+    return self.match(otherCards.map({$0 as PlayingCard}))
+  }
+  
+  func match(otherCards: [PlayingCard]) -> Int {
+    var score = 0
+    
+    if let otherCard = otherCards.first {
+      if otherCard.rank == rank {
+        score = 4
+      } else if otherCard.suit == suit {
+        score = 1
+      }
+    }
+    
+    println("Return score \(score)")
+    return score
+  }
 }
