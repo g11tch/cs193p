@@ -9,22 +9,22 @@
 import Foundation
 
 class PlayingCard : Card {
-  class var validSuits : [String] {
+  class var validSuits: [String] {
     return ["H", "D", "S", "C"]
   }
   
-  class var rankStrings : [String] {
+  class var rankStrings: [String] {
     return ["?", "A", "2", "3", "4", "5", "6", "7", "8", "9", "10",
       "J", "K", "Q"]
   }
   
-  class var maxRank : Int {
+  class var maxRank: Int {
     return self.rankStrings.count - 1;
   }
   
   // There has to be a better way to set up the getter/setter for suit and rank
   var _suit = "?"
-  var suit : String {
+  var suit: String {
     get {
       return self._suit
     }
@@ -38,7 +38,7 @@ class PlayingCard : Card {
   }
   
   var _rank = 0
-  var rank : Int {
+  var rank: Int {
     get {
       return self._rank
     }
@@ -49,7 +49,7 @@ class PlayingCard : Card {
     }
   }
   
-  override var contents : String {
+  override var contents: String {
     get {
       return PlayingCard.rankStrings[self.rank] + self.suit
     }

@@ -9,7 +9,7 @@
 import Foundation
 
 class Deck {
-  var cards : [Card] = []
+  var cards: [Card] = []
   
   func addCard(card: Card, atTop: Bool) {
     if atTop {
@@ -24,7 +24,7 @@ class Deck {
   }
   
   func drawRandomCard() -> Card? {
-    var randomCard : Card? = nil
+    var randomCard: Card? = nil
     
     if self.cards.count > 0 {
       let index = Int(arc4random()) % self.cards.count

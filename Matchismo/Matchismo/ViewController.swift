@@ -11,13 +11,13 @@ import UIKit
 class ViewController: UIViewController {
   
   @IBOutlet weak var flipLabel: UILabel!
-  var flipCount : Int = 0 {
+  var flipCount: Int = 0 {
     didSet {
       self.updateFlipLabel()
     }
   }
   
-  let deck : PlayingCardDeck = PlayingCardDeck()
+  let deck: PlayingCardDeck = PlayingCardDeck()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -42,7 +42,7 @@ class ViewController: UIViewController {
     self.flipCount++
   }
   
-  func frontShowing(button : UIButton) -> Bool {
+  func frontShowing(button: UIButton) -> Bool {
     let title : NSString? = button.currentTitle;
     
     return title?.length > 0;
@@ -56,12 +56,12 @@ class ViewController: UIViewController {
     return "No cards left"
   }
   
-  func showFront(button : UIButton) {
+  func showFront(button: UIButton) {
     let contents = self.nextCardContents()
     self.setImageAndTitleFor(button, imageName: "cardfront", title: contents)
   }
   
-  func showBack(button : UIButton) {
+  func showBack(button: UIButton) {
     self.setImageAndTitleFor(button, imageName: "cardback", title: "")
   }
   
