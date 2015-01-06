@@ -13,6 +13,7 @@ class ViewController: UIViewController {
   @IBOutlet weak var scoreLabel: UILabel!
   @IBOutlet weak var gameModeLabel: UILabel!
   @IBOutlet weak var gameModeSwitch: UISwitch!
+  @IBOutlet weak var historyLabel: UILabel!
   
   var gameMode: CardMatchingGame.GameMode = CardMatchingGame.GameMode.TwoCard {
     didSet {
@@ -46,6 +47,7 @@ class ViewController: UIViewController {
   
   @IBAction func touchedDealNewDeckButton(sender: UIButton) {
     gameModeSwitch.enabled = true
+    historyLabel.text      = "Game History"
     createGame()
     updateUI()
   }
@@ -63,19 +65,20 @@ class ViewController: UIViewController {
   }
   
   func createGame() -> CardMatchingGame {
-    deck = createDeck()
-    game =  CardMatchingGame(cardCount: cardButtons.count, deck: deck)
+    deck      = createDeck()
+    game      = CardMatchingGame(cardCount: cardButtons.count, deck: deck)
     game.mode = gameMode
     return game
   }
   
   func updateUI() {
+    historyLabel.text = game.lastAction
     for (index, cardButton) in enumerate(cardButtons) {
       if let card = game.cardAtIndex(index) {
         cardButton.setBackgroundImage(backgroundImageForCard(card), forState: UIControlState.Normal)
         cardButton.setTitle(titleForCard(card), forState: UIControlState.Normal)
         cardButton.enabled = !card.isMatched()
-        scoreLabel.text = "Score \(game.score)"
+        scoreLabel.text    = "Score \(game.score)"
       }
     }
   }

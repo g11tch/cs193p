@@ -102,4 +102,40 @@ class CardMatchingGameTest: XCTestCase {
     game.chooseCardAtIndex(2)
     XCTAssertEqual(game.score, 29)
   }
+  
+  func testLastActionWithMatch() {
+    let deck = generateDeckWithPlayingCards([
+      PlayingCard(suit: "H", rank: 2),
+      PlayingCard(suit: "S", rank: 2)
+    ])
+    let game = CardMatchingGame(cardCount: 2, deck: deck)
+    
+    game.chooseCardAtIndex(0)
+    XCTAssertEqual(game.lastAction, "")
+    
+    game.chooseCardAtIndex(1)
+    XCTAssertTrue(assertMatch(game.lastAction,
+      pattern: "Matched ([0-9][SCHD]\\s){2,3}for 16 points"),
+      "'\(game.lastAction)' should match pattern")
+  }
+  
+  func testLastActionWithNoMatch() {
+    let deck = generateDeckWithPlayingCards([
+      PlayingCard(suit: "H", rank: 2),
+      PlayingCard(suit: "S", rank: 5)
+    ])
+    let game = CardMatchingGame(cardCount: 2, deck: deck)
+    
+    game.chooseCardAtIndex(0)
+    XCTAssertEqual(game.lastAction, "")
+    
+    game.chooseCardAtIndex(1)
+    XCTAssertTrue(assertMatch(game.lastAction,
+      pattern: "([0-9][SCHD]\\s){2,3}don't match! 2 point penalty!"),
+      "'\(game.lastAction)' didn't match pattern")
+  }
+  
+  func assertMatch(string: String, pattern: String) -> Bool {
+    return Regex(pattern).test(string);
+  }
 }

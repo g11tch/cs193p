@@ -11,6 +11,7 @@ import Foundation
 class CardMatchingGame {
   var score = 0
   var cards: [Card] = []
+  var lastAction = ""
   let MismatchPenalty = 2
   let MatchBonus = 4
   let CostToChoose = 1
@@ -32,6 +33,7 @@ class CardMatchingGame {
   
   func chooseCardAtIndex(index: Int) {
     if let card = cardAtIndex(index) {
+      var scoreDelta = 0
       if visibleAndNotMatched(card) {
         card.chosen = false
       } else {
@@ -41,28 +43,41 @@ class CardMatchingGame {
         let possibleMatchCards = cards.filter(visibleAndNotMatched).filter({$0 !== card})
         
         if notEnoughCardsToAttemptMatch(possibleMatchCards) {
+          lastAction = ""
           return
         }
         
         let matchScore = card.match(possibleMatchCards)
         
         if matchScore > 0 {
-          score += matchScore * MatchBonus
+          scoreDelta += matchScore * MatchBonus
           
           card.matched = true
           for otherCard in possibleMatchCards {
             otherCard.matched = true
           }
         } else {
-          if possibleMatchCards.count > 0 {
-            score -= MismatchPenalty
-          }
+          scoreDelta -= MismatchPenalty
           
           for otherCard in possibleMatchCards {
             otherCard.chosen = false
           }
         }
+        
+        updateLastAction(card, otherCards: possibleMatchCards, scoreDelta: scoreDelta)
+        score += scoreDelta
       }
+    }
+  }
+  
+  func updateLastAction(card: Card, otherCards: [Card], scoreDelta: Int) {
+    let allCards = [card] + otherCards
+    let cards = join(" ", allCards.map({ $0.contents }))
+    
+    if scoreDelta > 0 {
+      lastAction = "Matched \(cards) for \(scoreDelta) points"
+    } else {
+      lastAction = "\(cards) don't match! \(abs(scoreDelta)) point penalty!"
     }
   }
   
