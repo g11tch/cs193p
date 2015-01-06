@@ -15,6 +15,13 @@ class CardMatchingGame {
   let MatchBonus = 4
   let CostToChoose = 1
   
+  enum GameMode {
+    case TwoCard
+    case ThreeCard
+  }
+  
+  var mode: GameMode = GameMode.TwoCard
+  
   init(cardCount: Int, deck: Deck) {
     for _ in 0...cardCount {
       if let card = deck.drawRandomCard() {

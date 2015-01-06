@@ -9,35 +9,60 @@
 import UIKit
 
 class ViewController: UIViewController {
-  
   @IBOutlet var cardButtons: [UIButton]!
   @IBOutlet weak var scoreLabel: UILabel!
+  @IBOutlet weak var gameModeLabel: UILabel!
+  
+  var gameMode: CardMatchingGame.GameMode = CardMatchingGame.GameMode.TwoCard {
+    didSet {
+      if gameMode == CardMatchingGame.GameMode.TwoCard {
+        gameModeLabel.text = "2 Card"
+      } else {
+        gameModeLabel.text = "3 Card"
+      }
+      if let game = game {
+        game.mode = gameMode
+      }
+    }
+  }
   
   var deck = PlayingCardDeck()
+  var game: CardMatchingGame!
   
-  lazy var game: CardMatchingGame = {
-    return CardMatchingGame(cardCount: self.cardButtons.count, deck: self.createDeck())
-  }()
-  
-  func createDeck() -> PlayingCardDeck {
-    return PlayingCardDeck()
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    createGame()
+    updateUI()
   }
   
   @IBAction func touchedCard(sender: UIButton) {
-    if let chosenButtonIndex = find(self.cardButtons, sender) {
+    if let chosenButtonIndex = find(cardButtons, sender) {
       game.chooseCardAtIndex(chosenButtonIndex)
       updateUI()
     }
   }
   
   @IBAction func touchedDealNewDeckButton(sender: UIButton) {
-    self.resetGame()
+    createGame()
+    updateUI()
   }
   
-  func resetGame() {
-    deck = self.createDeck()
-    game =  CardMatchingGame(cardCount: self.cardButtons.count, deck: deck)
-    self.updateUI()
+  @IBAction func requestGameModeChange(sender: UISwitch) {
+    if sender.on {
+      gameMode = CardMatchingGame.GameMode.ThreeCard
+    } else {
+      gameMode = CardMatchingGame.GameMode.TwoCard
+    }
+  }
+  
+  func createDeck() -> PlayingCardDeck {
+    return PlayingCardDeck()
+  }
+  
+  func createGame() -> CardMatchingGame {
+    deck = createDeck()
+    game =  CardMatchingGame(cardCount: cardButtons.count, deck: deck)
+    return game
   }
   
   func updateUI() {
