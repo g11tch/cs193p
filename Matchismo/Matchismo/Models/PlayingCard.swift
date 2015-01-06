@@ -75,15 +75,14 @@ class PlayingCard : Card {
   func match(otherCards: [PlayingCard]) -> Int {
     var score = 0
     
-    if let otherCard = otherCards.first {
+    for otherCard in otherCards {
       if otherCard.rank == rank {
-        score = 4
+        score += 4
       } else if otherCard.suit == suit {
-        score = 1
+        score += 1
       }
     }
     
-    println("Return score \(score)")
     return score
   }
 }

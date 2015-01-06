@@ -32,30 +32,56 @@ class CardMatchingGame {
   
   func chooseCardAtIndex(index: Int) {
     if let card = cardAtIndex(index) {
-      if !card.isMatched() {
-        if card.isChosen() {
-          card.chosen = false
-        } else {
-          for otherCard in cards {
-            if otherCard.isChosen() && !otherCard.isMatched() {
-              let matchScore = card.match([otherCard])
-              
-              if matchScore > 0 {
-                score += matchScore * MatchBonus
-                otherCard.matched = true
-                card.matched = true
-              } else {
-                score -= MismatchPenalty
-                otherCard.chosen = false
-              }
-              break // can only choose 2 cards for now
-            }
+      if visibleAndNotMatched(card) {
+        card.chosen = false
+      } else {
+        score -= CostToChoose
+        card.chosen = true
+        
+        let possibleMatchCards = cards.filter(visibleAndNotMatched).filter({$0 !== card})
+        
+        if notEnoughCardsToAttemptMatch(possibleMatchCards) {
+          return
+        }
+        
+        let matchScore = card.match(possibleMatchCards)
+        
+        if matchScore > 0 {
+          score += matchScore * MatchBonus
+          
+          card.matched = true
+          for otherCard in possibleMatchCards {
+            otherCard.matched = true
           }
-          score -= CostToChoose
-          card.chosen = true
+        } else {
+          if possibleMatchCards.count > 0 {
+            score -= MismatchPenalty
+          }
+          
+          for otherCard in possibleMatchCards {
+            otherCard.chosen = false
+          }
         }
       }
     }
+  }
+  
+  func notEnoughCardsToAttemptMatch(cards: [Card]) -> Bool {
+    return cards.count < (numCardsForMatch() - 1)
+  }
+  
+  func numCardsForMatch() -> Int {
+    if mode == GameMode.TwoCard {
+      return 2
+    } else if mode == GameMode.ThreeCard {
+      return 3
+    } else {
+      return 0
+    }
+  }
+  
+  func visibleAndNotMatched(card: Card) -> Bool {
+    return card.isChosen() && !card.isMatched()
   }
   
   func cardAtIndex(index: Int) -> Card? {

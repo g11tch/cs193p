@@ -62,6 +62,7 @@ class ViewController: UIViewController {
   func createGame() -> CardMatchingGame {
     deck = createDeck()
     game =  CardMatchingGame(cardCount: cardButtons.count, deck: deck)
+    game.mode = gameMode
     return game
   }
   
