@@ -25,9 +25,19 @@ class ViewController: UIViewController {
   
   @IBAction func touchedCard(sender: UIButton) {
     if let chosenButtonIndex = find(self.cardButtons, sender) {
-      self.game.chooseCardAtIndex(chosenButtonIndex)
-      self.updateUI()
+      game.chooseCardAtIndex(chosenButtonIndex)
+      updateUI()
     }
+  }
+  
+  @IBAction func touchedDealNewDeckButton(sender: UIButton) {
+    self.resetGame()
+  }
+  
+  func resetGame() {
+    deck = self.createDeck()
+    game =  CardMatchingGame(cardCount: self.cardButtons.count, deck: deck)
+    self.updateUI()
   }
   
   func updateUI() {
