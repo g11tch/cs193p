@@ -199,6 +199,7 @@
                     </view>
                     <connections>
                         <outlet property="gameModeLabel" destination="Ky0-vg-r8h" id="dE3-7y-bkd"/>
+                        <outlet property="gameModeSwitch" destination="grc-xF-1nO" id="FKy-6O-glR"/>
                         <outlet property="scoreLabel" destination="aSK-kA-ap0" id="YgF-8c-szC"/>
                         <outletCollection property="cardButtons" destination="VEf-K4-eGK" collectionClass="NSMutableArray" id="TGj-me-Eqd"/>
                         <outletCollection property="cardButtons" destination="W4J-JJ-xkT" collectionClass="NSMutableArray" id="RgI-jg-dnC"/>

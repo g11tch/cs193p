@@ -12,6 +12,7 @@ class ViewController: UIViewController {
   @IBOutlet var cardButtons: [UIButton]!
   @IBOutlet weak var scoreLabel: UILabel!
   @IBOutlet weak var gameModeLabel: UILabel!
+  @IBOutlet weak var gameModeSwitch: UISwitch!
   
   var gameMode: CardMatchingGame.GameMode = CardMatchingGame.GameMode.TwoCard {
     didSet {
@@ -36,6 +37,7 @@ class ViewController: UIViewController {
   }
   
   @IBAction func touchedCard(sender: UIButton) {
+    gameModeSwitch.enabled = false
     if let chosenButtonIndex = find(cardButtons, sender) {
       game.chooseCardAtIndex(chosenButtonIndex)
       updateUI()
@@ -43,6 +45,7 @@ class ViewController: UIViewController {
   }
   
   @IBAction func touchedDealNewDeckButton(sender: UIButton) {
+    gameModeSwitch.enabled = true
     createGame()
     updateUI()
   }
