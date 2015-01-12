@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MatchisimoViewController: UIViewController {
   @IBOutlet var cardButtons: [UIButton]!
   @IBOutlet weak var scoreLabel: UILabel!
   
