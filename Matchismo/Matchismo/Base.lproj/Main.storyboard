@@ -408,7 +408,7 @@
                     <navigationItem key="navigationItem" title="Matchisimo" id="wU0-Sz-klX">
                         <barButtonItem key="rightBarButtonItem" title="History" id="vfU-7v-d2t">
                             <connections>
-                                <segue destination="apG-Pk-8L5" kind="push" id="xVM-Dc-gdl"/>
+                                <segue destination="apG-Pk-8L5" kind="push" identifier="Show History" id="xVM-Dc-gdl"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -452,13 +452,25 @@
         <!--History-->
         <scene sceneID="sfM-PC-TfY">
             <objects>
-                <viewController id="apG-Pk-8L5" sceneMemberID="viewController">
+                <viewController id="apG-Pk-8L5" customClass="MatchisimoHistoryViewController" customModule="Matchismo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="H1T-Jk-WCW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="8hw-FE-fNm">
+                                <rect key="frame" x="0.0" y="64" width="320" height="454"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="History" id="tjT-n6-Jhr"/>
+                    <connections>
+                        <outlet property="historyTextView" destination="8hw-FE-fNm" id="ttF-Zo-ias"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j3Z-1U-OZ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

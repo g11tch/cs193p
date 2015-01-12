@@ -10,6 +10,7 @@
 		2348C7C71A59EEAE006FFF7F /* DeckTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2348C7C61A59EEAE006FFF7F /* DeckTest.swift */; };
 		236DB61C1A6407130028CFAD /* MatchisimoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236DB61B1A6407130028CFAD /* MatchisimoViewController.swift */; };
 		236DB61E1A6407E20028CFAD /* SetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236DB61D1A6407E20028CFAD /* SetViewController.swift */; };
+		236DB6201A640A120028CFAD /* MatchisimoHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236DB61F1A640A120028CFAD /* MatchisimoHistoryViewController.swift */; };
 		237F87291A59FA96004E274A /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DB14661A59AF730089ECA4 /* Card.swift */; };
 		237F872A1A59FAA5004E274A /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DB14681A59B3ED0089ECA4 /* Deck.swift */; };
 		237F872B1A59FAB6004E274A /* PlayingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DB146A1A59B7170089ECA4 /* PlayingCard.swift */; };
@@ -46,6 +47,7 @@
 		2348C7C61A59EEAE006FFF7F /* DeckTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DeckTest.swift; path = Unit/DeckTest.swift; sourceTree = "<group>"; };
 		236DB61B1A6407130028CFAD /* MatchisimoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchisimoViewController.swift; sourceTree = "<group>"; };
 		236DB61D1A6407E20028CFAD /* SetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetViewController.swift; sourceTree = "<group>"; };
+		236DB61F1A640A120028CFAD /* MatchisimoHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchisimoHistoryViewController.swift; sourceTree = "<group>"; };
 		237F872D1A59FC2B004E274A /* PlayingCardTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayingCardTest.swift; path = Unit/PlayingCardTest.swift; sourceTree = "<group>"; };
 		237F872F1A59FE29004E274A /* PlayingCardDeckTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayingCardDeckTest.swift; path = Unit/PlayingCardDeckTest.swift; sourceTree = "<group>"; };
 		238E7F071A59EA7C00D5A8DC /* CardTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardTest.swift; path = Unit/CardTest.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				23DB14451A59A0DA0089ECA4 /* AppDelegate.swift */,
 				23DB14651A59AF330089ECA4 /* Models */,
 				236DB61B1A6407130028CFAD /* MatchisimoViewController.swift */,
+				236DB61F1A640A120028CFAD /* MatchisimoHistoryViewController.swift */,
 				236DB61D1A6407E20028CFAD /* SetViewController.swift */,
 				23DB14491A59A0DA0089ECA4 /* Main.storyboard */,
 				23DB144C1A59A0DA0089ECA4 /* Images.xcassets */,
@@ -290,6 +293,7 @@
 				23DB14691A59B3ED0089ECA4 /* Deck.swift in Sources */,
 				23B3D1361A5AD0700037AFAF /* CardMatchingGame.swift in Sources */,
 				23DB146D1A59C2B80089ECA4 /* PlayingCardDeck.swift in Sources */,
+				236DB6201A640A120028CFAD /* MatchisimoHistoryViewController.swift in Sources */,
 				23DB14671A59AF730089ECA4 /* Card.swift in Sources */,
 				23DB14461A59A0DA0089ECA4 /* AppDelegate.swift in Sources */,
 			);

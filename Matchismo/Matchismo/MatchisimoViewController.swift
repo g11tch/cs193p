@@ -25,9 +25,6 @@ class MatchisimoViewController: UIViewController {
   @IBAction func touchedCard(sender: UIButton) {
     if let chosenButtonIndex = find(cardButtons, sender) {
       game.chooseCardAtIndex(chosenButtonIndex)
-      if let card = game.cardAtIndex(chosenButtonIndex) {
-        gameHistory.append(card.contents)
-      }
       updateUI()
     }
   }
@@ -37,14 +34,22 @@ class MatchisimoViewController: UIViewController {
     updateUI()
   }
   
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.identifier == "Show History" {
+      let vc = segue.destinationViewController as MatchisimoHistoryViewController
+      vc.history = gameHistory
+    }
+  }
+  
   func createDeck() -> PlayingCardDeck {
     return PlayingCardDeck()
   }
   
   func createGame() -> CardMatchingGame {
-    deck                 = createDeck()
-    game                 = CardMatchingGame(cardCount: cardButtons.count, deck: deck)
-    game.mode            = .TwoCard
+    gameHistory = []
+    deck        = createDeck()
+    game        = CardMatchingGame(cardCount: cardButtons.count, deck: deck)
+    game.mode   = .TwoCard
     return game
   }
   
@@ -55,6 +60,9 @@ class MatchisimoViewController: UIViewController {
         cardButton.setTitle(titleForCard(card), forState: UIControlState.Normal)
         cardButton.enabled = !card.isMatched()
         navigationItem.title = "Score: \(game.score)"
+        if game.lastAction != gameHistory.last && countElements(game.lastAction) > 0 {
+          gameHistory.append(game.lastAction)
+        }
       }
     }
   }
