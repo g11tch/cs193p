@@ -405,7 +405,13 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="0.25098040699958801" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Matchisimo" id="wU0-Sz-klX"/>
+                    <navigationItem key="navigationItem" title="Matchisimo" id="wU0-Sz-klX">
+                        <barButtonItem key="rightBarButtonItem" title="History" id="vfU-7v-d2t">
+                            <connections>
+                                <segue destination="apG-Pk-8L5" kind="push" id="xVM-Dc-gdl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outletCollection property="cardButtons" destination="VEf-K4-eGK" collectionClass="NSMutableArray" id="TGj-me-Eqd"/>
                         <outletCollection property="cardButtons" destination="W4J-JJ-xkT" collectionClass="NSMutableArray" id="RgI-jg-dnC"/>
@@ -443,6 +449,21 @@
             </objects>
             <point key="canvasLocation" x="982" y="-330"/>
         </scene>
+        <!--History-->
+        <scene sceneID="sfM-PC-TfY">
+            <objects>
+                <viewController id="apG-Pk-8L5" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="H1T-Jk-WCW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="History" id="tjT-n6-Jhr"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j3Z-1U-OZ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1412" y="-330"/>
+        </scene>
         <!--Set-->
         <scene sceneID="Aps-j7-B5H">
             <objects>
@@ -452,11 +473,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Set" id="gmc-fe-JDz"/>
+                    <navigationItem key="navigationItem" title="Set" id="gmc-fe-JDz">
+                        <barButtonItem key="rightBarButtonItem" title="History" id="IKo-JR-LYB">
+                            <connections>
+                                <segue destination="sdt-Zz-VzF" kind="push" id="K9Q-WO-89c"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I4Q-vO-DOM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="982" y="309"/>
+        </scene>
+        <!--History-->
+        <scene sceneID="PeB-9v-nWQ">
+            <objects>
+                <viewController id="sdt-Zz-VzF" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bM8-QB-tL2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="History" id="f5N-je-b9U"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Go-iB-cR1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1412" y="309"/>
         </scene>
         <!--Matchisimo-->
         <scene sceneID="XZu-aG-c3t">
