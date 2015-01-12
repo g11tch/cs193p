@@ -11,25 +11,10 @@ import UIKit
 class ViewController: UIViewController {
   @IBOutlet var cardButtons: [UIButton]!
   @IBOutlet weak var scoreLabel: UILabel!
-  @IBOutlet weak var gameModeLabel: UILabel!
-  @IBOutlet weak var gameModeSwitch: UISwitch!
-  @IBOutlet weak var historyLabel: UILabel!
-  
-  var gameMode: CardMatchingGame.GameMode = CardMatchingGame.GameMode.TwoCard {
-    didSet {
-      if gameMode == CardMatchingGame.GameMode.TwoCard {
-        gameModeLabel.text = "2 Card"
-      } else {
-        gameModeLabel.text = "3 Card"
-      }
-      if let game = game {
-        game.mode = gameMode
-      }
-    }
-  }
   
   var deck = PlayingCardDeck()
   var game: CardMatchingGame!
+  var gameHistory: [String] = []
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -38,26 +23,18 @@ class ViewController: UIViewController {
   }
   
   @IBAction func touchedCard(sender: UIButton) {
-    gameModeSwitch.enabled = false
     if let chosenButtonIndex = find(cardButtons, sender) {
       game.chooseCardAtIndex(chosenButtonIndex)
+      if let card = game.cardAtIndex(chosenButtonIndex) {
+        gameHistory.append(card.contents)
+      }
       updateUI()
     }
   }
   
   @IBAction func touchedDealNewDeckButton(sender: UIButton) {
-    gameModeSwitch.enabled = true
-    historyLabel.text      = "Game History"
     createGame()
     updateUI()
-  }
-  
-  @IBAction func requestGameModeChange(sender: UISwitch) {
-    if sender.on {
-      gameMode = CardMatchingGame.GameMode.ThreeCard
-    } else {
-      gameMode = CardMatchingGame.GameMode.TwoCard
-    }
   }
   
   func createDeck() -> PlayingCardDeck {
@@ -65,20 +42,19 @@ class ViewController: UIViewController {
   }
   
   func createGame() -> CardMatchingGame {
-    deck      = createDeck()
-    game      = CardMatchingGame(cardCount: cardButtons.count, deck: deck)
-    game.mode = gameMode
+    deck                 = createDeck()
+    game                 = CardMatchingGame(cardCount: cardButtons.count, deck: deck)
+    game.mode            = .TwoCard
     return game
   }
   
   func updateUI() {
-    historyLabel.text = game.lastAction
     for (index, cardButton) in enumerate(cardButtons) {
       if let card = game.cardAtIndex(index) {
         cardButton.setBackgroundImage(backgroundImageForCard(card), forState: UIControlState.Normal)
         cardButton.setTitle(titleForCard(card), forState: UIControlState.Normal)
         cardButton.enabled = !card.isMatched()
-        scoreLabel.text    = "Score \(game.score)"
+        navigationItem.title = "Score: \(game.score)"
       }
     }
   }
