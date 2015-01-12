@@ -29,7 +29,7 @@ class MatchisimoViewController: UIViewController {
     }
   }
   
-  @IBAction func touchedDealNewDeckButton(sender: UIButton) {
+  @IBAction func touchedDealButton(sender: UIBarButtonItem) {
     createGame()
     updateUI()
   }

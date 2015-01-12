@@ -391,21 +391,15 @@
                                     <action selector="touchedCard:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="l8m-al-S9a"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="cHo-C5-lEy">
-                                <rect key="frame" x="93" y="456" width="134" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Deal New Deck">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="touchedDealNewDeckButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="8aT-KH-Fms"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="0.25098040699958801" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Matchisimo" id="wU0-Sz-klX">
+                        <barButtonItem key="leftBarButtonItem" title="Deal" id="wxn-fP-oVK">
+                            <connections>
+                                <action selector="touchedDealButton:" destination="vXZ-lx-hvc" id="mGn-6i-X8h"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="History" id="vfU-7v-d2t">
                             <connections>
                                 <segue destination="apG-Pk-8L5" kind="push" identifier="Show History" id="xVM-Dc-gdl"/>
@@ -500,7 +494,7 @@
         <!--History-->
         <scene sceneID="PeB-9v-nWQ">
             <objects>
-                <viewController id="sdt-Zz-VzF" sceneMemberID="viewController">
+                <viewController id="sdt-Zz-VzF" customClass="SetHistoryViewController" customModule="Matchismo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bM8-QB-tL2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
